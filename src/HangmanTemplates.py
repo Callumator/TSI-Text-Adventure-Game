@@ -61,8 +61,9 @@ class HangmanTemplates:
 ========="""
             ]
         return '\n'.join(guess_templates[:max_guesses])
-    # def letters_used():
-    #         ALPHABETARRAY= ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
+    def letters_used():
+        ALPHABETARRAY= ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
+        return ALPHABETARRAY
 
 
     def getAnimalWords():
