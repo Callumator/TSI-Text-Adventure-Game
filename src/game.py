@@ -28,7 +28,17 @@ class game:
             guess = input("Guess a letter or a word : ")
 
             if guess == "help":
-                print("Letters left to guess: " + str(set(HangmanTemplates.letters_used()) - set(correct_letters)))
+
+                letters_to_guess = HangmanTemplates.get_unused_letters(correct_letters + incorrect_letters)
+                sorted_letters = " ".join(sorted(letters_to_guess))
+                print("Letters left to guess: " + sorted_letters)
+                print("Letters already guessed: " + " ".join(sorted(incorrect_letters + correct_letters)).upper())
+                if incorrect_words != []:
+                    print("Words that have already been guessed: " + " ".join(sorted(incorrect_words)).upper())
+
+                #print("Letters left to guess: " + HangmanTemplates.get_unused_letters((correct_letters + incorrect_letters))).sort
+
+                #print("Letters left to guess: " + sorted(str(set(HangmanTemplates.letters_used()) - set((correct_letters + incorrect_letters))))
                 continue
 
 
@@ -47,32 +57,39 @@ class game:
                         print("You Won")
                         game_over = True
                         break
-                    else:
-                        print("Wrong")
-                        n_fails = n_fails + 1
-                        incorrect_words.append(guess)
+                    # else:
+                    #     print("Wrong")
+                    #     n_fails = n_fails + 1
+                    #     incorrect_words.append(guess)
 
             if guess in incorrect_letters or guess in correct_letters:
                 print("You already guessed that letter - try again")
                 continue
             else:
 
-                if guess in wordToGuess:
+                if guess in wordToGuess and len(guess) == 1:
                     print("Correct")
                     correct_letters.append(guess)
                     if "".join(correct_letters) == wordToGuess:
                         print("You won")
                         game_over = True
                         break
+                elif len(guess) < 1:
+                        print("Please make a guess at a letter or a word")
+                        continue
                 else:
                     print("Wrong")
                     n_fails = n_fails + 1
-                    incorrect_letters.append(guess)
-                    print("Number of fails: " + str(n_fails))
+                    if len(guess) == 1:
+                        incorrect_letters.append(guess)
+                    else:
+                        incorrect_words.append(guess)
 
-            if n_fails == 7:
+            if n_fails == 6:
                 print("Game over")
                 print("The word was: " + wordToGuess)
+                hangmanVisual =  HangmanTemplates.get_guesses(n_fails + 1)
+                print(hangmanVisual)
                 game_over = True
 
 

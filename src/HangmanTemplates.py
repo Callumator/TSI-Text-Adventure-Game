@@ -60,9 +60,15 @@ class HangmanTemplates:
       |
 ========="""
             ]
-        return '\n'.join(guess_templates[:max_guesses])
-    def letters_used():
+        return '\n'.join(guess_templates[max_guesses-1:max_guesses])
+    def get_unused_letters(used_letters):
         ALPHABETARRAY= ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
+        list_of_unused_letters = []
+
+        for letter in used_letters:
+            if letter.upper() in ALPHABETARRAY:
+                ALPHABETARRAY.remove(letter.upper())
+
         return ALPHABETARRAY
 
 
