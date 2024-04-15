@@ -70,10 +70,16 @@ class game:
                 if guess in wordToGuess and len(guess) == 1:
                     print("Correct")
                     correct_letters.append(guess)
-                    if "".join(correct_letters) == wordToGuess:
+
+                    wordToGuessRemoved = []
+                    wordToGuessRemoved = list(wordToGuess)
+
+                    if all(letter in correct_letters for letter in wordToGuess):
                         print("You won")
+                        print("The word was: " + wordToGuess)
                         game_over = True
                         break
+
                 elif len(guess) < 1:
                         print("Please make a guess at a letter or a word")
                         continue
@@ -91,10 +97,6 @@ class game:
                 hangmanVisual =  HangmanTemplates.get_guesses(n_fails + 1)
                 print(hangmanVisual)
                 game_over = True
-
-
-
-
 
     def players2():
 
