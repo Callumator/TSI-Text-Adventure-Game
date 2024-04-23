@@ -43,8 +43,7 @@ class game:
 
 
             if guess == "quit":
-                print("Goodbye")
-                game_over = True
+                game_over = self.game_quit()
                 break
 
             if len(guess) > 1:
@@ -53,9 +52,11 @@ class game:
                     continue
                 else:
                     if guess == wordToGuess:
-                        print("Correct")
-                        print("You Won")
-                        game_over = True
+
+                        game_over = self.game_won()
+                        # print("Correct")
+                        # print("You Won")
+                        # game_over = True
                         break
                     # else:
                     #     print("Wrong")
@@ -75,9 +76,9 @@ class game:
                     wordToGuessRemoved = list(wordToGuess)
 
                     if all(letter in correct_letters for letter in wordToGuess):
-                        print("You won")
-                        print("The word was: " + wordToGuess)
-                        game_over = True
+                        # print("You won")
+                        # print("The word was: " + wordToGuess)
+                        game_over = self.game_won()
                         break
 
                 elif len(guess) < 1:
@@ -140,9 +141,9 @@ class game:
                     continue
                 else:
                     if guess == wordToGuess:
-                        print("Correct")
-                        print("You Won")
-                        game_over = True
+                        # print("Correct")
+                        # print("You Won")
+                        game_over = self.game_won()
                         break
                     else:
                         print("Wrong")
@@ -155,11 +156,12 @@ class game:
             else:
 
                 if guess in wordToGuess:
-                    print("Correct")
+                    print("Correct Letter")
                     correct_letters.append(guess)
                     if "".join(correct_letters) == wordToGuess:
-                        print("You won")
-                        game_over = True
+                        # print("You won")
+                        # game_over = True
+                        game_over = self.game_won()
                         break
                 else:
                     print("Wrong")
@@ -180,3 +182,13 @@ class game:
         print("Letters already guessed: " + " ".join(sorted(incorrect_letters + correct_letters)).upper())
         if incorrect_words != []:
             print("Words that have already been guessed: " + " ".join(sorted(incorrect_words)).upper())
+
+    def game_quit(self):
+        print("Goodbye")
+        game_over = True
+        return game_over
+
+    def game_won(self):
+        print("Correct, You have guessed the word!")
+        print("You Won")
+        game_over = True
