@@ -2,7 +2,7 @@ from HangmanTemplates import HangmanTemplates
 import getpass
 
 class game:
-    def players1():
+    def players1(self):
 
         correct_letters = []
         incorrect_letters = []
@@ -28,13 +28,13 @@ class game:
             guess = input("Guess a letter or a word : ")
 
             if guess == "help":
-
-                letters_to_guess = HangmanTemplates.get_unused_letters(correct_letters + incorrect_letters)
-                sorted_letters = " ".join(sorted(letters_to_guess))
-                print("Letters left to guess: " + sorted_letters)
-                print("Letters already guessed: " + " ".join(sorted(incorrect_letters + correct_letters)).upper())
-                if incorrect_words != []:
-                    print("Words that have already been guessed: " + " ".join(sorted(incorrect_words)).upper())
+                self.game_help(correct_letters, incorrect_letters, incorrect_words, n_fails, game_over, wordToGuess)
+                # letters_to_guess = HangmanTemplates.get_unused_letters(correct_letters + incorrect_letters)
+                # sorted_letters = " ".join(sorted(letters_to_guess))
+                # print("Letters left to guess: " + sorted_letters)
+                # print("Letters already guessed: " + " ".join(sorted(incorrect_letters + correct_letters)).upper())
+                # if incorrect_words != []:
+                #     print("Words that have already been guessed: " + " ".join(sorted(incorrect_words)).upper())
 
                 #print("Letters left to guess: " + HangmanTemplates.get_unused_letters((correct_letters + incorrect_letters))).sort
 
@@ -98,7 +98,7 @@ class game:
                 print(hangmanVisual)
                 game_over = True
 
-    def players2():
+    def players2(self):
 
         correct_letters = []
         incorrect_letters = []
@@ -173,3 +173,10 @@ class game:
                 game_over = True
 
 
+    def game_help(self, correct_letters, incorrect_letters, incorrect_words, n_fails, game_over, wordToGuess):
+        letters_to_guess = HangmanTemplates.get_unused_letters(correct_letters + incorrect_letters)
+        sorted_letters = " ".join(sorted(letters_to_guess))
+        print("Letters left to guess: " + sorted_letters)
+        print("Letters already guessed: " + " ".join(sorted(incorrect_letters + correct_letters)).upper())
+        if incorrect_words != []:
+            print("Words that have already been guessed: " + " ".join(sorted(incorrect_words)).upper())

@@ -1,7 +1,7 @@
 from LogIn import LogIn
 from game import game
 
-
+game = game()
 class Main:
     def main():
         log_in = LogIn()
