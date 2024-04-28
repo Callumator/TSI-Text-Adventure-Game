@@ -33,3 +33,7 @@ class database_manager:
         self.cursor.execute("SELECT * FROM Customers WHERE email = ?", (email,))
         users = self.cursor.fetchall()
         return users
+
+    def insert_user(self, email, first_name, last_name, password):
+        self.cursor.execute("INSERT INTO Customers VALUES (?, ?, ?, ?)", (email, first_name, last_name, password))
+        self.conn.commit()

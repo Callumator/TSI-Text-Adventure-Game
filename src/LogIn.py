@@ -54,3 +54,24 @@ class LogIn:
                 flag = True
 
         return flag
+
+class SignUp:
+    def sign_up(self):
+        signed_up = False
+        while signed_up == False:
+            Continue = False
+            email_address = input("Enter your email address for signing up: ")
+            for customer in dbManager.get_users():
+                if email_address == customer[0]:
+                    print("That email address is already in our database")
+                    Continue = True
+            if Continue == True:
+                continue
+            # if email_address 
+            #     print("That email address is already in our database")
+            #     continue
+            first_name = input("Enter your first name: ")
+            last_name = input("Enter your last name: ")
+            password = input("Enter your password: ")
+            dbManager.insert_user(email_address, first_name, last_name, password)
+            signed_up = True
