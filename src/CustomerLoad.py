@@ -1,10 +1,10 @@
-from ReadCSVFile import ReadCSVFile
+from ReadDB import *
 from Customer import Customer
 
 class CustomerLoad:
 
     def get_raw_customer(self):
-        read_csv_file = ReadCSVFile()
+        read_db_file = ReadDB()
         customer_data = read_csv_file.get_file_data("customer.csv")
         return customer_data
 
