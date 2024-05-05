@@ -16,6 +16,12 @@ class TestDB(unittest.TestCase):
         self.assertEqual(len(Customers), 2)
         self.assertEqual(Customers[0][1], 'email1')
         self.assertEqual(Customers[1][1], 'email2')
+        self.assertEqual(Customers[0][2], 'Fname1')
+        self.assertEqual(Customers[1][2], 'Fname2')
+        self.assertEqual(Customers[0][3], 'Lname1')
+        self.assertEqual(Customers[1][3], 'Lname2')
+        self.assertEqual(Customers[0][4], 'password1')
+        self.assertEqual(Customers[1][4], 'password2')
 
 if __name__ == '__main__':
     unittest.main()
