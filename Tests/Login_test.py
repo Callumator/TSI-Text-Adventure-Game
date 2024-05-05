@@ -1,10 +1,15 @@
 import unittest
-from Login import *
+
+import os
+import sys
+
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from LogIn import *
 
 class TestUser(unittest.TestCase):
 
-    # def setUp(self):
-    #     self.user = user("testuser", "password123")
+    def setUp(self):
+        self.user = user("testuser", "password123")
 
     def test_login(self):
         self.assertEqual(self.login.login(), "You are logged in")
