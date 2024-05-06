@@ -5,8 +5,7 @@ class CustomerLoad:
 
     def get_raw_customer(self):
         read_db_file = ReadDB()
-        customer_data = read_csv_file.get_file_data("customer.csv")
-        return customer_data
+        return read_db_file
 
     def load_customers(self):
         customers = []

@@ -24,32 +24,8 @@ class Main:
                 exit()
             else:
                 print("Invalid input - Enter 1 to log in or 2 to sign up or 'quit' to quit: ")
-
-
-
-        #log_in = LogIn()
-        #successful_login = log_in.log_in()
-        # log_in.log_in()
         if successful_login == True:
-            flag = False
-            while flag == False:
-                n_players = input("Enter number of players (1 or 2) or quit: ")
-                if n_players == "1":
-                    print("One player game")
-                    flag = True
-                    game.players1()
-
-                elif n_players == "2":
-                    print("Two players game")
-                    flag = True
-                    game.players2()
-
-                elif n_players == "quit":
-                    print("Goodbye")
-                    break
-
-                else:
-                    print("Invalid input - Enter number of players (1 or 2) or quit: ")
+            game.game()
         else:
             print("Unsuccessful Login. Goodbye")
 

@@ -10,25 +10,16 @@ class LogIn:
             return True
         else:
             return False
-
-        # customerLoad = ReadDB()
-        # customers = dbManager.get_users()
-        # password = ""
-        # counter = 0
-        # while password == "" and counter < len(customers):
-        #     if email_address == customers[counter].get_email():
-        #         password = customers[counter].password
-        #     counter += 1
         return password
 
     def get_email(self, email_address):
         customerLoad = dbManager.get_users()
         for customer in customerLoad:
             if email_address == customer[0]:
-                print("in customerLoad")
+                print("Email in Database")
                 return customer
 
-        print("not in cutomerLoad")
+        print("Email not in Database")
         return None
 
     def log_in(self):
@@ -67,9 +58,6 @@ class SignUp:
                     Continue = True
             if Continue == True:
                 continue
-            # if email_address 
-            #     print("That email address is already in our database")
-            #     continue
             first_name = input("Enter your first name: ")
             last_name = input("Enter your last name: ")
             password = input("Enter your password: ")
